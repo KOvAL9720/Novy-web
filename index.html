@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="sk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Presúvam…</title><meta name="robots" content="noindex">
+<script>
+(function () {
+  var map = [['/Novy-web/app/', '/web/zona/'], ['/Novy-web/', '/web/'], ['/trainer-app/', '/trener/']];
+  var p = location.pathname, to = '/web/';
+  for (var i = 0; i < map.length; i++) if (p.indexOf(map[i][0]) === 0 || p + '/' === map[i][0]) { to = map[i][1] + p.slice(map[i][0].length).replace(/^index\.html$/, ''); break; }
+  try { navigator.serviceWorker && navigator.serviceWorker.getRegistrations().then(function (rs) { rs.forEach(function (r) { if (/\/(trainer-app|Novy-web)\//.test(r.scope)) r.unregister(); }); }); } catch (e) {}
+  location.replace(to + location.search + location.hash);
+})();
+</script></head>
+<body style="font-family:system-ui;padding:24px">Stránka sa presunula. <a href="/web/">Pokračovať</a></body></html>
