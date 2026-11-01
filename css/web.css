@@ -375,7 +375,8 @@ html body h2 { text-shadow: 3px 3px 0 rgba(198, 42, 60, .4); }
    Lift Tara – osobný tréner: balíčky a nové sekcie
    ========================================================= */
 .tiers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; align-items: stretch; max-width: 1080px; margin: 0 auto; }
-@media (max-width: 900px) { .tiers { grid-template-columns: 1fr; max-width: 480px; } }
+@media (max-width: 900px) { .tiers { grid-template-columns: minmax(0, 1fr); max-width: 480px; } }
+@media (max-width: 380px) { .tier { padding: 26px 18px; } .tier .btn { white-space: normal; text-align: center; } }
 .tier { padding: 30px 26px; }
 .tier h3 { margin: 4px 0 2px; font-family: var(--display); font-weight: 400; font-size: 1.7rem; letter-spacing: .01em !important; }
 .tier .tier-sub { margin: 0 0 10px; font-size: .95rem; }
