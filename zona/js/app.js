@@ -359,7 +359,7 @@ async function sendRequest() {
 function notifyTrainer(r) {
   const topic = TRAINER.ntfy;
   if (!topic || !/^[\w-]{1,64}$/.test(topic)) return;
-  const q = new URLSearchParams({ title: `Žiadosť o tréning – ${r.clientName || 'klient'}`, tags: 'calendar', click: 'https://koval9720.github.io/trener/' });
+  const q = new URLSearchParams({ title: `Žiadosť o tréning – ${r.clientName || 'klient'}`, tags: 'calendar', click: 'https://lifttara.github.io/app/' });
   fetch(`https://ntfy.sh/${topic}?${q}`, { method: 'POST', body: `${fmtDay(r.date)} o ${r.time}${r.note ? `\n${r.note}` : ''}` }).catch(() => {});
 }
 

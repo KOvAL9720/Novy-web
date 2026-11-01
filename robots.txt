@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /web/zona/
 
-Sitemap: https://koval9720.github.io/web/sitemap.xml
+Sitemap: https://lifttara.github.io/sitemap.xml
