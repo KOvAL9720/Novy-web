@@ -13,6 +13,20 @@
   <link rel="canonical" href="https://lifttara.github.io/">
   <link rel="alternate" hreflang="sk" href="https://lifttara.github.io/">
   <link rel="alternate" hreflang="en" href="https://lifttara.github.io/en/">
+  <link rel="alternate" hreflang="x-default" href="https://lifttara.github.io/">
+  <script>
+    (function () {
+      try {
+        if (/bot|crawl|spider|slurp|facebookexternalhit|preview/i.test(navigator.userAgent)) return;
+        var q = new URLSearchParams(location.search).get('lang');
+        if (q === 'sk' || q === 'en') localStorage.setItem('lt-lang', q);
+        var pref = localStorage.getItem('lt-lang');
+        var langs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ''];
+        var slavic = langs.some(function (l) { return /^(sk|cs)(-|_|$)/i.test(l); });
+        if (pref === 'en' || (!pref && !slavic)) location.replace('en/' + location.search + location.hash);
+      } catch (e) { /* bez úložiska ostane slovenčina */ }
+    })();
+  </script>
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="sk_SK">
@@ -119,7 +133,7 @@
         <a href="#ako">Ako to funguje</a>
         <a href="#balicky">Balíčky</a>
         <a href="#faq">Otázky</a>
-        <a href="en/" class="btn small lang" hreflang="en" lang="en" aria-label="English version">EN</a>
+        <a href="en/" class="btn small lang" hreflang="en" lang="en" onclick="try{localStorage.setItem('lt-lang','en')}catch(e){}" aria-label="English version">EN</a>
         <a href="https://lifttara.github.io/app/?lang=sk" class="btn small"><span class="lg">Otvoriť appku</span><span class="sm">Appka</span></a>
       </nav>
     </div>
