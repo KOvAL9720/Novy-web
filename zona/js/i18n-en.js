@@ -763,7 +763,7 @@ window.I18N_EN = {
 "máj": "May",
 "na účet": "bank transfer",
 "napr. Celé telo A, Nohy + core…": "e.g. Full body A, Legs + core…",
-"napr. Jakub Kovalčík": "e.g. Jakub Kovalčík",
+"napr. Tomáš Novák": "e.g. Tomáš Novák",
 "napr. ako si sa cítil/a": "e.g. how you felt",
 "napr. môžem aj o hodinu neskôr": "e.g. I can also do an hour later",
 "napr. schudnúť 5 kg, zlepšiť kondíciu…": "e.g. lose 5 kg, improve fitness…",
