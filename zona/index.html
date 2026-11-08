@@ -4,13 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lift Tara</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; object-src 'none'; base-uri 'self'">
 <meta name="robots" content="noindex">
 <meta http-equiv="refresh" content="0; url=../app/">
-<script>
-  // Klientska zóna už neexistuje – kto má starý odkaz, ide do appky.
-  try { navigator.serviceWorker && navigator.serviceWorker.getRegistrations().then(function (rs) { rs.forEach(function (r) { if (/\/zona\//.test(r.scope)) r.unregister(); }); }); } catch (e) { /* ok */ }
-  location.replace('../app/');
-</script>
+<script src="redirect.js"></script>
 </head>
-<body style="font-family:system-ui;padding:24px"><a href="../app/">Lift Tara</a></body>
+<body><a href="../app/">Lift Tara</a></body>
 </html>

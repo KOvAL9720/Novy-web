@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'sha256-IAyDNT/6G2NaZTyTSdvAUQ/pFZrWGkqhx0Gfecst/xU='; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
   <title>Lift Tara – your personal trainer in your pocket</title>
   <meta name="description" content="Lift Tara is a personal trainer in your pocket: a training program tailored to your goal, demos and technique for every exercise, a live workout and progress tracking. For the gym and for home.">
   <meta name="color-scheme" content="dark light">
@@ -120,7 +121,7 @@
         <a href="#ako">How it works</a>
         <a href="#balicky">Plans</a>
         <a href="#faq">FAQ</a>
-        <a href="../" class="btn small lang" hreflang="sk" lang="sk" onclick="try{localStorage.setItem('lt-lang','sk')}catch(e){}" aria-label="Slovenská verzia">SK</a>
+        <a href="../" class="btn small lang" hreflang="sk" lang="sk" data-lang="sk" aria-label="Slovenská verzia">SK</a>
         <a href="https://lifttara.github.io/app/?lang=en" class="btn small"><span class="lg">Open the app</span><span class="sm">App</span></a>
       </nav>
     </div>
@@ -216,7 +217,7 @@
 
     <section id="balicky" class="section">
       <div class="wrap">
-        <div class="section-head center rv"><p class="eyebrow">Plans</p><h2>Choose how much guidance you want</h2><p class="lead" style="margin:0 auto">Every plan comes with 7 days free. Cancel or change it anytime.</p></div>
+        <div class="section-head center rv"><p class="eyebrow">Plans</p><h2>Choose how much guidance you want</h2><p class="lead mx-auto">Every plan comes with 7 days free. Cancel or change it anytime.</p></div>
         <div class="tiers">
           <article class="card price-card tier tier-basic rv">
             
@@ -249,11 +250,11 @@
 
     <section id="instalacia" class="section alt">
       <div class="wrap">
-        <div class="section-head center rv"><p class="eyebrow">Installation</p><h2>No App Store, straight to your home screen</h2><p class="lead" style="margin:0 auto">Lift Tara is a web app. Open it in your browser and add it to your home screen – then it behaves like a regular app, full screen too.</p></div>
+        <div class="section-head center rv"><p class="eyebrow">Installation</p><h2>No App Store, straight to your home screen</h2><p class="lead mx-auto">Lift Tara is a web app. Open it in your browser and add it to your home screen – then it behaves like a regular app, full screen too.</p></div>
         <div class="grid3">
-          <div class="card rv"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18h3"/></svg></span><h3>iPhone</h3><p class="muted" style="margin:0">In Safari tap <b>Share</b> → <b>Add to Home Screen</b>.</p></div>
-          <div class="card rv"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18h3"/></svg></span><h3>Android</h3><p class="muted" style="margin:0">In Chrome open the menu <b>⋮</b> → <b>Install app</b>.</p></div>
-          <div class="card rv"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><h3>Computer</h3><p class="muted" style="margin:0">In Chrome or Edge click the install icon in the address bar.</p></div>
+          <div class="card rv"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18h3"/></svg></span><h3>iPhone</h3><p class="muted m0">In Safari tap <b>Share</b> → <b>Add to Home Screen</b>.</p></div>
+          <div class="card rv"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18h3"/></svg></span><h3>Android</h3><p class="muted m0">In Chrome open the menu <b>⋮</b> → <b>Install app</b>.</p></div>
+          <div class="card rv"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><h3>Computer</h3><p class="muted m0">In Chrome or Edge click the install icon in the address bar.</p></div>
         </div>
       </div>
     </section>
@@ -287,28 +288,6 @@
   <footer class="footer">
     <div class="wrap"><span>© <span id="year">2026</span> Lift Tara · your personal trainer in your pocket</span><span class="foot-links"><a href="terms.html#podmienky" class="muted">Terms</a><a href="terms.html#sukromie" class="muted">Privacy</a><a href="mailto:lifttara.support@gmail.com" class="muted">lifttara.support@gmail.com</a><a href="https://lifttara.github.io/app/?lang=en" class="muted">Open the app ›</a></span></div>
   </footer>
-  <script>
-    // Lišta sa po posunutí z fotky zmení na sklo; fotka sa hýbe pomalšie ako obsah (paralaxa)
-    const siteTop = document.getElementById('top');
-    const bg = document.querySelector('.hero-bg');
-    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let raf = 0;
-    const onScroll = () => {
-      raf = 0;
-      siteTop.classList.toggle('solid', scrollY > innerHeight * 0.6);
-      if (!reduce && bg && scrollY < innerHeight * 1.2) bg.style.setProperty('--py', `${Math.round(scrollY * 0.3)}px`);
-    };
-    addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(onScroll); }, { passive: true });
-    onScroll();
-    // Sekcie sa jemne vysunú, keď sa k nim posunieš
-    if ('IntersectionObserver' in window && !reduce) {
-      const io = new IntersectionObserver((list) => {
-        let n = 0;
-        list.forEach((e) => { if (!e.isIntersecting) return; e.target.style.setProperty('--d', `${Math.min(n++, 5) * 80}ms`); e.target.classList.add('in'); io.unobserve(e.target); });
-      }, { rootMargin: '0px 0px -8% 0px' });
-      document.querySelectorAll('.rv').forEach((el) => io.observe(el));
-    } else document.querySelectorAll('.rv').forEach((el) => el.classList.add('in'));
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <script src="../js/site.js"></script>
 </body>
 </html>
