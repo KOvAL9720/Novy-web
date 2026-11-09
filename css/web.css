@@ -400,3 +400,86 @@ html body h2 { text-shadow: 3px 3px 0 rgba(198, 42, 60, .4); }
 /* pomocné triedy namiesto inline style="" (kvôli Content-Security-Policy) */
 .lead.mx-auto { margin: 0 auto; }
 .m0 { margin: 0; }
+
+/* =========================================================
+   Redizajn – tekuté sklo (rovnaký štýl ako appka): živé farebné pozadie,
+   sklenené karty s lesklými hranami, lesklé červené tlačidlá, pružinové animácie
+   ========================================================= */
+:root {
+  --spring2: cubic-bezier(.3, 1.5, .5, 1);
+  --lq-card: linear-gradient(135deg, rgba(255, 255, 255, .13), rgba(255, 255, 255, .04));
+  --lq-hi: inset 0 1px 0 rgba(255, 255, 255, .38), inset 0 -1px 0 rgba(255, 255, 255, .06), inset 1px 0 0 rgba(255, 255, 255, .1);
+  --lq-drop: 0 22px 40px -22px rgba(0, 0, 0, .85);
+  --lq-line: rgba(255, 255, 255, .13);
+  --lq-btn: rgba(255, 255, 255, .1);
+  --pill-red: radial-gradient(circle at 35% 30%, #ff6b77, #c62a3c 60%, #8a1726);
+  --lq-glass: rgba(30, 20, 17, .55);
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --lq-card: linear-gradient(135deg, rgba(255, 255, 255, .78), rgba(255, 250, 242, .5));
+    --lq-hi: inset 0 1px 0 rgba(255, 255, 255, .95), inset 0 -1px 0 rgba(160, 110, 70, .08);
+    --lq-drop: 0 18px 34px -20px rgba(110, 60, 30, .45);
+    --lq-line: rgba(255, 255, 255, .9);
+    --lq-btn: rgba(255, 255, 255, .6);
+    --lq-glass: rgba(255, 248, 240, .62);
+  }
+}
+html { background: #140d0b; }
+@media (prefers-color-scheme: light) { html { background: #f6ece0; } }
+html body { background: transparent !important; }
+html body::after { display: none !important; }
+.lt-bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.lt-bg i { position: absolute; border-radius: 50%; filter: blur(80px); opacity: .7; animation: lt-float 16s ease-in-out infinite alternate; will-change: transform; }
+.lt-bg i:nth-child(1) { width: 70vmax; height: 70vmax; left: -25vmax; top: -25vmax; background: #c62a3c; }
+.lt-bg i:nth-child(2) { width: 55vmax; height: 55vmax; right: -25vmax; top: 30vh; background: #e9b75c; opacity: .45; animation-delay: -6s; }
+.lt-bg i:nth-child(3) { width: 60vmax; height: 60vmax; left: -15vmax; bottom: -30vmax; background: #7a1622; animation-delay: -11s; }
+@media (prefers-color-scheme: light) { .lt-bg i { opacity: .32; } .lt-bg i:nth-child(2) { opacity: .4; } .lt-bg i:nth-child(3) { background: #e88a7a; } }
+@keyframes lt-float { to { transform: translate(6vmax, 8vmax) scale(1.15); } }
+
+/* moderné písmo v nadpisoch */
+html body h1, html body h2, html body h3, .brand { font-family: var(--font) !important; font-weight: 800 !important; letter-spacing: -.03em !important; text-shadow: none !important; }
+.hero-section h1 { text-shadow: 0 10px 30px rgba(0, 0, 0, .5) !important; }
+
+/* sekcie bez plných pruhov – pozadie presvitá */
+.section.alt { background: transparent !important; border-color: transparent !important; }
+.footer { border-top-color: var(--lq-line) !important; }
+
+/* sklenené karty */
+.card, .price-card, .tier, .faq details, .quote-b p, .tile {
+  background: var(--lq-card) !important; background-image: var(--lq-card) !important;
+  backdrop-filter: blur(24px) saturate(1.5); -webkit-backdrop-filter: blur(24px) saturate(1.5);
+  border: 1px solid var(--lq-line) !important; box-shadow: var(--lq-hi), var(--lq-drop) !important;
+}
+.card, .price-card, .tier, .faq details { border-radius: 28px !important; }
+.tile { border-radius: 20px !important; }
+.card { transition: transform .45s var(--spring2), box-shadow .3s; }
+@media (hover: hover) { .card:hover { transform: translateY(-4px); } }
+/* odporúčaný balíček – červená žiara */
+.price-card.featured, .tier.featured { background: linear-gradient(150deg, rgba(216, 48, 63, .34), rgba(120, 20, 30, .18)) !important; border-color: rgba(255, 120, 130, .55) !important; box-shadow: var(--lq-hi), 0 0 0 1px rgba(216, 48, 63, .5), 0 30px 60px -26px rgba(216, 48, 63, .8) !important; }
+.price-card.featured::before, .price-card.featured::after { display: none !important; }
+@media (prefers-color-scheme: light) { .price-card.featured, .tier.featured { color: var(--text) !important; } .price-card.featured .muted, .price-card.featured .price span { color: var(--muted) !important; } }
+.end-cta { background: linear-gradient(150deg, rgba(216, 48, 63, .3), rgba(30, 15, 12, .5)) !important; }
+@media (prefers-color-scheme: light) { .end-cta { color: var(--text) !important; } .end-cta .lead { color: var(--muted) !important; } .end-cta .btn.glass { color: var(--text) !important; } }
+
+/* tlačidlá – pilulky, hlavné lesklé červené */
+.btn { border-radius: 999px !important; transition: transform .35s var(--spring2), background .2s, box-shadow .2s !important; }
+.btn:not(.primary) { background: var(--lq-btn) !important; border: 1px solid var(--lq-line) !important; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25) !important; }
+.btn.primary { background: var(--pill-red) !important; color: #fff8ee !important; border: 0 !important; font-family: var(--font) !important; font-weight: 700 !important; letter-spacing: 0 !important; box-shadow: 0 14px 30px -12px rgba(216, 48, 63, .85), inset 0 1px 1px rgba(255, 255, 255, .55) !important; }
+.btn.primary:active, .btn:active { transform: scale(.95) !important; }
+.btn.sheen::after { background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .35), transparent) !important; }
+.site-top.solid { background: var(--lq-glass) !important; border-bottom-color: var(--lq-line) !important; }
+.tag, .soon, .badge { border-radius: 999px !important; transform: none !important; }
+.tier .badge { background: var(--pill-red) !important; border: 0 !important; }
+.checks li::before { background: var(--pill-red) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff8ee' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center / 12px no-repeat !important; box-shadow: 0 4px 10px -4px rgba(216, 48, 63, .7); }
+.faq summary::after { background-color: var(--lq-btn) !important; border-radius: 50%; }
+
+/* telefóny so screenshotmi – jemné vznášanie */
+.phone { animation: lt-bob 6s ease-in-out infinite; }
+.phone:nth-child(2) { animation-delay: -2s; } .phone:nth-child(3) { animation-delay: -4s; }
+@keyframes lt-bob { 50% { translate: 0 -8px; } }
+.greta-photo img { animation: lt-bob 5s ease-in-out infinite; }
+
+/* odhaľovanie pri posúvaní s pružinou */
+.rv { transition: opacity .8s ease, transform .9s var(--spring2) !important; }
+@media (prefers-reduced-motion: reduce) { .lt-bg i, .phone, .greta-photo img { animation: none !important; } }
