@@ -510,3 +510,5 @@ html body h1, html body h2, html body h3, .brand { font-family: var(--font) !imp
 .step:nth-child(2) .num { background: radial-gradient(circle at 35% 30%, #ffd98f, #e2a33a 60%, #a8701d); box-shadow: 0 14px 24px -10px rgba(226, 163, 58, .85), inset 0 1px 1px rgba(255, 255, 255, .6), inset 0 -4px 8px rgba(90, 55, 10, .35); }
 .step:nth-child(3) .num { background: radial-gradient(circle at 35% 30%, #8fe0a0, #3f9e57 60%, #2a7440); box-shadow: 0 14px 24px -10px rgba(63, 158, 87, .85), inset 0 1px 1px rgba(255, 255, 255, .6), inset 0 -4px 8px rgba(15, 60, 25, .35); }
 @media (hover: hover) { .step:hover .num { transform: scale(1.08) rotate(-6deg); } }
+/* guľky v jednej farbe – lesklá červená (bez striedania farieb) */
+.step:nth-child(n) .num, .feat-grid .card:nth-child(n) .ic { background: var(--pill-red) !important; box-shadow: 0 14px 24px -10px rgba(216, 48, 63, .85), inset 0 1px 1px rgba(255, 255, 255, .6), inset 0 -4px 8px rgba(80, 10, 18, .35) !important; }
