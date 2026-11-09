@@ -483,3 +483,17 @@ html body h1, html body h2, html body h3, .brand { font-family: var(--font) !imp
 /* odhaľovanie pri posúvaní s pružinou */
 .rv { transition: opacity .8s ease, transform .9s var(--spring2) !important; }
 @media (prefers-reduced-motion: reduce) { .lt-bg i, .phone, .greta-photo img { animation: none !important; } }
+/* ikonky na kartách – lesklé 3D guľky ako tlačidlá v appke */
+.ic, .feat .ic, .step .ic {
+  width: 56px !important; height: 56px !important; border-radius: 50% !important; color: #fff8ee !important;
+  background: var(--pill-red) !important; border: 0 !important;
+  box-shadow: 0 12px 22px -10px rgba(216, 48, 63, .85), inset 0 1px 1px rgba(255, 255, 255, .6), inset 0 -3px 6px rgba(80, 10, 18, .35) !important;
+  position: relative; transition: transform .45s var(--spring2);
+}
+.ic::after { content: ""; position: absolute; top: 7px; left: 12px; width: 22px; height: 11px; border-radius: 50%; background: linear-gradient(180deg, rgba(255, 255, 255, .55), rgba(255, 255, 255, 0)); pointer-events: none; }
+.ic .i { width: 26px !important; height: 26px !important; stroke-width: 2.2; filter: drop-shadow(0 1px 1px rgba(80, 10, 18, .4)); position: relative; z-index: 1; }
+@media (hover: hover) { .card:hover .ic { transform: scale(1.08) rotate(-6deg); } }
+.feat-grid .card:nth-child(4n+2) .ic { background: radial-gradient(circle at 35% 30%, #ffd98f, #e2a33a 60%, #a8701d) !important; box-shadow: 0 12px 22px -10px rgba(226, 163, 58, .85), inset 0 1px 1px rgba(255, 255, 255, .6), inset 0 -3px 6px rgba(90, 55, 10, .35) !important; }
+.feat-grid .card:nth-child(4n+3) .ic { background: radial-gradient(circle at 35% 30%, #d9a37c, #a86a42 60%, #6e3f22) !important; box-shadow: 0 12px 22px -10px rgba(168, 106, 66, .85), inset 0 1px 1px rgba(255, 255, 255, .55), inset 0 -3px 6px rgba(60, 30, 10, .35) !important; }
+.feat-grid .card:nth-child(4n) .ic { background: radial-gradient(circle at 35% 30%, #e08aa0, #9b3a5a 60%, #5e1f36) !important; box-shadow: 0 12px 22px -10px rgba(155, 58, 90, .85), inset 0 1px 1px rgba(255, 255, 255, .55), inset 0 -3px 6px rgba(50, 10, 25, .35) !important; }
+.tile .ti { background: var(--pill-red) !important; color: #fff8ee !important; box-shadow: 0 8px 16px -8px rgba(216, 48, 63, .85), inset 0 1px 1px rgba(255, 255, 255, .6) !important; }
