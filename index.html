@@ -1,13 +1,295 @@
 <!doctype html>
-<html lang="sk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Presúvam…</title><meta name="robots" content="noindex">
-<script>
-(function () {
-  var map = [['/Novy-web/app/', '/web/zona/'], ['/Novy-web/', '/web/'], ['/trainer-app/', '/trener/']];
-  var p = location.pathname, to = '/web/';
-  for (var i = 0; i < map.length; i++) if (p.indexOf(map[i][0]) === 0 || p + '/' === map[i][0]) { to = map[i][1] + p.slice(map[i][0].length).replace(/^index\.html$/, ''); break; }
-  try { navigator.serviceWorker && navigator.serviceWorker.getRegistrations().then(function (rs) { rs.forEach(function (r) { if (/\/(trainer-app|Novy-web)\//.test(r.scope)) r.unregister(); }); }); } catch (e) {}
-  location.replace(to + location.search + location.hash);
-})();
-</script></head>
-<body style="font-family:system-ui;padding:24px">Stránka sa presunula. <a href="/web/">Pokračovať</a></body></html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'sha256-IAyDNT/6G2NaZTyTSdvAUQ/pFZrWGkqhx0Gfecst/xU='; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <title>Lift Tara – osobný tréner v mobile</title>
+  <meta name="description" content="Lift Tara je osobný tréner v mobile: tréningový program na mieru tvojmu cieľu, ukážky a technika pri každom cviku, živý tréning a progres. Do posilňovne aj na doma.">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#15100e" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f7f1e6" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="icons/icon.svg?v=4" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png?v=4">
+  <link rel="canonical" href="https://lifttara.github.io/">
+  <link rel="alternate" hreflang="sk" href="https://lifttara.github.io/">
+  <link rel="alternate" hreflang="en" href="https://lifttara.github.io/en/">
+  <link rel="alternate" hreflang="x-default" href="https://lifttara.github.io/">
+  <script src="js/lang.js"></script>
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="sk_SK">
+  <meta property="og:site_name" content="Lift Tara">
+  <meta property="og:title" content="Lift Tara – osobný tréner v mobile">
+  <meta property="og:description" content="Program na mieru, technika pri každom cviku, živý tréning a progres. Vyskúšaj 7 dní zadarmo.">
+  <meta property="og:url" content="https://lifttara.github.io/">
+  <meta property="og:image" content="https://lifttara.github.io/icons/og.jpg?v=1">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Lift Tara">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Lift Tara – osobný tréner v mobile">
+  <meta name="twitter:description" content="Program na mieru, technika pri každom cviku, živý tréning a progres. Vyskúšaj 7 dní zadarmo.">
+  <meta name="twitter:image" content="https://lifttara.github.io/icons/og.jpg?v=1">
+  <link rel="preload" as="image" href="icons/hero.jpg">
+  <style>html, body { background: #15100e; } @media (prefers-color-scheme: light) { html, body { background: #f7f1e6; } }</style>
+  <link rel="stylesheet" href="css/web.css?v=15">
+  <script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Lift Tara",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "iOS, Android, Windows, macOS (web app)",
+  "url": "https://lifttara.github.io/",
+  "image": "https://lifttara.github.io/icons/icon-512.png",
+  "inLanguage": "sk",
+  "description": "Lift Tara je osobný tréner v mobile: tréningový program na mieru tvojmu cieľu, ukážky a technika pri každom cviku, živý tréning a progres. Do posilňovne aj na doma.",
+  "offers": [{"@type": "Offer", "name": "Basic", "price": "4.99", "priceCurrency": "EUR"}, {"@type": "Offer", "name": "Medium", "price": "9.99", "priceCurrency": "EUR"}, {"@type": "Offer", "name": "Pro", "price": "14.99", "priceCurrency": "EUR"}]
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+ {
+  "@type": "Question",
+  "name": "Je Lift Tara vhodná pre začiatočníkov?",
+  "acceptedAnswer": {
+   "@type": "Answer",
+   "text": "Áno. V dotazníku zvolíš „Začiatočník“ a dostaneš jednoduchší program s menej sériami. Pri každom cviku je postup krok za krokom a najčastejšie chyby."
+  }
+ },
+ {
+  "@type": "Question",
+  "name": "Musím chodiť do posilňovne?",
+  "acceptedAnswer": {
+   "@type": "Answer",
+   "text": "Nie. Program sa dá zostaviť aj na doma s jednoručkami alebo úplne bez náradia."
+  }
+ },
+ {
+  "@type": "Question",
+  "name": "Aký je rozdiel medzi balíčkami?",
+  "acceptedAnswer": {
+   "@type": "Answer",
+   "text": "Basic má hotový program na celé telo, knižnicu cvikov a živý tréning. Medium pridá program na mieru tvojmu cieľu, vlastné tréningy a celý progres. Pro je plná verzia s AI asistentom, ktorého pripravujeme."
+  }
+ },
+ {
+  "@type": "Question",
+  "name": "Môžem balíček zmeniť alebo zrušiť?",
+  "acceptedAnswer": {
+   "@type": "Answer",
+   "text": "Áno, kedykoľvek v appke v Nastaveniach → Predplatné alebo cez odkaz v e-maile. Ak zrušíš počas 7 dní zadarmo, nezaplatíš nič. Tvoje dáta ostanú uložené."
+  }
+ },
+ {
+  "@type": "Question",
+  "name": "Treba appku sťahovať z App Store alebo Google Play?",
+  "acceptedAnswer": {
+   "@type": "Answer",
+   "text": "Nie. Lift Tara je webová aplikácia – otvoríš ju v prehliadači a jedným ťuknutím ju pridáš na plochu. Potom sa správa ako bežná appka."
+  }
+ },
+ {
+  "@type": "Question",
+  "name": "Funguje appka aj bez internetu?",
+  "acceptedAnswer": {
+   "@type": "Answer",
+   "text": "Áno. Tréning aj zápis výkonov fungujú offline a zmeny sa zosynchronizujú, keď sa pripojíš."
+  }
+ },
+ {
+  "@type": "Question",
+  "name": "Môžem ju používať na mobile aj na počítači?",
+  "acceptedAnswer": {
+   "@type": "Answer",
+   "text": "Áno. Po prihlásení sa program, tréningy aj progres synchronizujú medzi všetkými tvojimi zariadeniami."
+  }
+ }
+]
+ }
+]
+  </script>
+</head>
+<body>
+  <div class="lt-bg" aria-hidden="true"><i></i><i></i><i></i></div>
+  <header class="site-top" id="top">
+    <div class="wrap">
+      <a href="#" class="brand"><img src="icons/icon.svg?v=4" alt=""> Lift Tara</a>
+      <nav class="menu" aria-label="Hlavné menu">
+        <a href="#funkcie">Funkcie</a>
+        <a href="#ako">Ako to funguje</a>
+        <a href="#balicky">Balíčky</a>
+        <a href="#faq">Otázky</a>
+        <a href="en/" class="btn small lang" hreflang="en" lang="en" data-lang="en" aria-label="English version">EN</a>
+        <a href="https://lifttara.github.io/app/?lang=sk" class="btn small"><span class="lg">Otvoriť appku</span><span class="sm">Appka</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-section">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="wrap hero-in">
+        <p class="eyebrow">Osobný tréner v mobile</p>
+        <h1>Tréner, ktorý je <em>vždy pri tebe.</em></h1>
+        <p class="lead">Odpovedz na pár otázok a Lift Tara ti zostaví tréningový program na mieru. Pri každom cviku ti ukáže, ako ho robiť správne, odráta pauzy a zapíše výkony. Do posilňovne aj na doma.</p>
+        <div class="actions">
+          <a href="#balicky" class="btn primary sheen">Vyskúšať 7 dní zadarmo <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="https://lifttara.github.io/app/?demo&amp;lang=sk" class="btn glass">Pozrieť ukážku</a>
+        </div>
+        <div class="tiles"><div class="tile"><span class="ti"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></svg></span><div><b>Na mieru</b><span>program podľa teba</span></div></div><div class="tile"><span class="ti"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"/></svg></span><div><b>80+ cvikov</b><span>s technikou</span></div></div><div class="tile"><span class="ti"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 15a4 4 0 0 0 4 4h10a4 4 0 0 0 .5-8A6 6 0 0 0 6 10a4 4 0 0 0-3 5z"/></svg></span><div><b>Offline</b><span>aj bez signálu</span></div></div></div>
+      </div>
+      <span class="scroll-hint" aria-hidden="true"></span>
+    </section>
+
+    <section id="funkcie" class="section">
+      <div class="wrap">
+        <div class="app-head rv">
+          <div>
+            <p class="eyebrow">Funkcie</p>
+            <h2>Všetko, čo robí osobný tréner</h2>
+            <p class="lead">Program, technika, vedenie tréningom a progres. Bez hľadania videí a bez zošita.</p>
+            <div class="actions"><a href="#balicky" class="btn primary">Vyskúšať 7 dní zadarmo <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a href="https://lifttara.github.io/app/?demo&amp;lang=sk" class="btn">Pozrieť ukážku</a></div>
+          </div>
+          <div class="phones" aria-hidden="true">
+            <figure class="phone"><img src="icons/screens/a-program.jpg" alt="" loading="lazy" width="600" height="1300"></figure>
+            <figure class="phone main"><img src="icons/screens/a-today.jpg" alt="" loading="lazy" width="600" height="1300"></figure>
+            <figure class="phone"><img src="icons/screens/a-ex.jpg" alt="" loading="lazy" width="600" height="1300"></figure>
+          </div>
+        </div>
+        <div class="feat-grid">
+          <article class="card feat rv"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></svg></span><h3>Program na mieru</h3><p>Podľa cieľa (postava, sila, chudnutie, kondícia), skúseností, počtu dní a toho, či cvičíš v posilňovni alebo doma.</p></article>
+          <article class="card feat rv"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"/></svg></span><h3>Knižnica cvikov</h3><p>Pri každom cviku postup krok za krokom, zapojené svaly a najčastejšie chyby. Aj cviky bez náradia.</p></article>
+          <article class="card feat rv"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l5.5-3.5z"/></svg></span><h3>Živý tréning</h3><p>Appka ťa prevedie cvikmi, odráta pauzu, navrhne váhu na ďalšiu sériu a oslávi nový rekord.</p></article>
+          <article class="card feat rv"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg></span><h3>Rekordy a progres</h3><p>Najlepšia séria pri každom cviku, graf výkonu a história všetkých tréningov.</p></article>
+          <article class="card feat rv"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></span><h3>Merania a fotky</h3><p>Váha, obvody a fotky progresu na jednom mieste, s grafom vývoja.</p></article>
+          <article class="card feat rv"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 14.6A7.8 7.8 0 1 1 9.4 4.5a6.3 6.3 0 0 0 10.1 10.1z"/></svg></span><h3>Návyky</h3><p>Kroky, voda a spánok za pár sekúnd denne, s vlastnými cieľmi.</p></article>
+          <article class="card feat rv"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5h10M9 12h10M9 19h10M5 5h.01M5 12h.01M5 19h.01"/></svg></span><h3>Obmedzenia</h3><p>Bolí ťa chrbát, kolená alebo ramená? Program vynechá cviky, ktoré by ich zaťažovali.</p></article>
+          <article class="card feat rv"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 15a4 4 0 0 0 4 4h10a4 4 0 0 0 .5-8A6 6 0 0 0 6 10a4 4 0 0 0-3 5z"/></svg></span><h3>Mobil aj počítač</h3><p>Po prihlásení sa všetko synchronizuje. Funguje aj offline, v slovenčine aj angličtine.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="trening" class="section alt">
+      <div class="wrap">
+        <div class="app-head reverse rv">
+          <div>
+            <p class="eyebrow">Počas tréningu</p>
+            <h2>Tréning krok za krokom</h2>
+            <p class="lead">Ťukni na „Začať tréning“ a appka ťa vedie. Vidíš, čo cvičiť, koľko sérií a s akou váhou. Po sérii odráta pauzu a po tréningu ukáže, ako si sa zlepšil.</p>
+            <ul class="checks"><li>Časovač pauzy medzi sériami</li><li>Návrh váhy podľa minulého tréningu</li><li>Oslava osobného rekordu</li><li>Súhrn: čas, série a zdvihnuté kilá</li></ul>
+          </div>
+          <div class="phones two" aria-hidden="true">
+            <figure class="phone main"><img src="icons/screens/a-live.jpg" alt="" loading="lazy" width="600" height="1300"></figure>
+            <figure class="phone"><img src="icons/screens/a-progress.jpg" alt="" loading="lazy" width="600" height="1300"></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="greta" class="section">
+      <div class="wrap greta-sec">
+        <div class="greta-photo rv"><img src="icons/greta/flex.jpg" alt="Babka Greta ukazuje biceps" loading="lazy" width="520" height="578"><span class="tag">BABKA GRETA</span></div>
+        <div class="rv">
+          <p class="eyebrow">Tvoja motivácia</p>
+          <h2>Zoznám sa s babkou Gretou</h2>
+          <p class="lead">Greta je maskot Lift Tara. Každý deň ťa v appke prehovorí krátkou hláškou. Program ti zostaví Lift Tara, Greta ťa len nenechá vynechať.</p>
+          <div class="quotes">
+            <div class="quote-b"><img src="icons/greta/avatar.jpg" alt="" width="44" height="44" loading="lazy"><p>„Kolená von, hrudník hore. Ja drepujem hlbšie aj s vrecom zemiakov.“</p></div>
+            <div class="quote-b"><img src="icons/greta/avatar.jpg" alt="" width="44" height="44" loading="lazy"><p>„Rekordy sa nerobia na gauči.“</p></div>
+            <div class="quote-b"><img src="icons/greta/avatar.jpg" alt="" width="44" height="44" loading="lazy"><p>„Nevynechávaj. Vymeň. Kto hľadá, nájde spôsob.“</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ako" class="section alt">
+      <div class="wrap">
+        <div class="section-head center rv"><p class="eyebrow">Ako to funguje</p><h2>Začneš za minútu</h2></div>
+        <div class="grid3">
+          <div class="card step rv"><span class="num">01</span><h3>Vyplň dotazník</h3><p>Cieľ, skúsenosti, koľko dní v týždni chceš cvičiť a kde. Trvá to minútu.</p></div>
+          <div class="card step rv"><span class="num">02</span><h3>Dostaneš program</h3><p>Lift Tara zostaví tréningové dni na mieru, so sériami, opakovaniami a pauzami.</p></div>
+          <div class="card step rv"><span class="num">03</span><h3>Cvič a sleduj progres</h3><p>Appka ťa prevedie každým tréningom, zapíše výkony a ukáže rekordy.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="balicky" class="section">
+      <div class="wrap">
+        <div class="section-head center rv"><p class="eyebrow">Balíčky</p><h2>Vyber si, ako veľmi ťa má viesť</h2><p class="lead mx-auto">Každý balíček má 7 dní zadarmo. Zrušiť alebo zmeniť ho môžeš kedykoľvek.</p></div>
+        <div class="tiers">
+          <article class="card price-card tier tier-basic rv">
+            
+            <h3>Basic</h3>
+            <p class="muted tier-sub">Pre začiatok s hotovým programom.</p>
+            <p class="price">4,99 € <span>/ mesiac</span></p>
+            <ul class="checks"><li><span>Knižnica 80+ cvikov s technikou a chybami</span></li><li><span>Hotový program na celé telo</span></li><li><span>Živý tréning s časovačom pauzy</span></li><li><span>Zápis výkonov a osobné rekordy</span></li><li><span>Mobil aj počítač, funguje offline</span></li></ul>
+            <a href="https://lifttara.github.io/app/?plan=basic&amp;lang=sk" class="btn">Vyskúšať 7 dní zadarmo <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+          <article class="card price-card tier tier-medium featured rv">
+            <span class="badge">Najobľúbenejší</span>
+            <h3>Medium</h3>
+            <p class="muted tier-sub">Program na mieru presne pre teba.</p>
+            <p class="price">9,99 € <span>/ mesiac</span></p>
+            <ul class="checks"><li><span>Všetko z Basic</span></li><li><span>Program na mieru podľa cieľa, miesta a obmedzení</span></li><li><span>2 až 5 tréningových dní, zmena kedykoľvek</span></li><li><span>Vlastné tréningy z knižnice cvikov</span></li><li><span>Grafy, merania, fotky progresu a návyky</span></li></ul>
+            <a href="https://lifttara.github.io/app/?plan=medium&amp;lang=sk" class="btn primary">Vyskúšať 7 dní zadarmo <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+          <article class="card price-card tier tier-pro rv">
+            
+            <h3>Pro</h3>
+            <p class="muted tier-sub">Plná verzia s AI asistentom.</p>
+            <p class="price">14,99 € <span>/ mesiac</span></p>
+            <ul class="checks"><li><span>Všetko z Medium</span></li><li><span>AI asistent: technika, strava aj úprava plánu <span class="soon">pripravujeme</span></span></li><li><span>Nové funkcie dostaneš ako prvý</span></li><li><span>Prednostná podpora</span></li></ul>
+            <a href="https://lifttara.github.io/app/?plan=pro&amp;lang=sk" class="btn">Vyskúšať 7 dní zadarmo <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+        </div>
+        <p class="muted tier-note">Ceny sú vrátane DPH, kde sa uplatňuje. Platba kartou, Apple Pay, Google Pay alebo cez PayPal.</p>
+      </div>
+    </section>
+
+    <section id="instalacia" class="section alt">
+      <div class="wrap">
+        <div class="section-head center rv"><p class="eyebrow">Inštalácia</p><h2>Bez App Store, priamo na plochu</h2><p class="lead mx-auto">Lift Tara je webová aplikácia. Otvoríš ju v prehliadači a pridáš na plochu – potom sa správa ako bežná appka, aj na celú obrazovku.</p></div>
+        <div class="grid3">
+          <div class="card rv"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18h3"/></svg></span><h3>iPhone</h3><p class="muted m0">V Safari ťukni na <b>Zdieľať</b> → <b>Pridať na plochu</b>.</p></div>
+          <div class="card rv"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18h3"/></svg></span><h3>Android</h3><p class="muted m0">V Chrome otvor menu <b>⋮</b> → <b>Inštalovať aplikáciu</b>.</p></div>
+          <div class="card rv"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><h3>Počítač</h3><p class="muted m0">V Chrome alebo Edge klikni na ikonku inštalácie v paneli s adresou.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section">
+      <div class="wrap">
+        <div class="section-head center rv"><p class="eyebrow">Časté otázky</p><h2>Na čo sa pýtate najčastejšie</h2></div>
+        <div class="faq">
+          <details class="card rv" open><summary>Je Lift Tara vhodná pre začiatočníkov?</summary><p>Áno. V dotazníku zvolíš „Začiatočník“ a dostaneš jednoduchší program s menej sériami. Pri každom cviku je postup krok za krokom a najčastejšie chyby.</p></details>
+          <details class="card rv"><summary>Musím chodiť do posilňovne?</summary><p>Nie. Program sa dá zostaviť aj na doma s jednoručkami alebo úplne bez náradia.</p></details>
+          <details class="card rv"><summary>Aký je rozdiel medzi balíčkami?</summary><p>Basic má hotový program na celé telo, knižnicu cvikov a živý tréning. Medium pridá program na mieru tvojmu cieľu, vlastné tréningy a celý progres. Pro je plná verzia s AI asistentom, ktorého pripravujeme.</p></details>
+          <details class="card rv"><summary>Môžem balíček zmeniť alebo zrušiť?</summary><p>Áno, kedykoľvek v appke v Nastaveniach → Predplatné alebo cez odkaz v e-maile. Ak zrušíš počas 7 dní zadarmo, nezaplatíš nič. Tvoje dáta ostanú uložené.</p></details>
+          <details class="card rv"><summary>Treba appku sťahovať z App Store alebo Google Play?</summary><p>Nie. Lift Tara je webová aplikácia – otvoríš ju v prehliadači a jedným ťuknutím ju pridáš na plochu. Potom sa správa ako bežná appka.</p></details>
+          <details class="card rv"><summary>Funguje appka aj bez internetu?</summary><p>Áno. Tréning aj zápis výkonov fungujú offline a zmeny sa zosynchronizujú, keď sa pripojíš.</p></details>
+          <details class="card rv"><summary>Môžem ju používať na mobile aj na počítači?</summary><p>Áno. Po prihlásení sa program, tréningy aj progres synchronizujú medzi všetkými tvojimi zariadeniami.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section id="zacat" class="section">
+      <div class="wrap">
+        <div class="card end-cta rv">
+          <h2>Prvý tréning môžeš mať ešte dnes</h2>
+          <p class="lead">Vyplň dotazník, dostaneš program a 7 dní cvičíš zadarmo.</p>
+          <div class="actions"><a href="#balicky" class="btn primary">Vyskúšať 7 dní zadarmo <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a href="https://lifttara.github.io/app/?demo&amp;lang=sk" class="btn glass">Pozrieť ukážku</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap"><span>© <span id="year">2026</span> Lift Tara · osobný tréner v mobile</span><span class="foot-links"><a href="podmienky.html#podmienky" class="muted">Obchodné podmienky</a><a href="podmienky.html#sukromie" class="muted">Ochrana súkromia</a><a href="mailto:lifttara.support@gmail.com" class="muted">lifttara.support@gmail.com</a><a href="https://lifttara.github.io/app/?lang=sk" class="muted">Otvoriť appku ›</a></span></div>
+  </footer>
+  <script src="js/site.js"></script>
+</body>
+</html>
