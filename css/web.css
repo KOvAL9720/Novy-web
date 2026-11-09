@@ -497,3 +497,16 @@ html body h1, html body h2, html body h3, .brand { font-family: var(--font) !imp
 .feat-grid .card:nth-child(4n+3) .ic { background: radial-gradient(circle at 35% 30%, #d9a37c, #a86a42 60%, #6e3f22) !important; box-shadow: 0 12px 22px -10px rgba(168, 106, 66, .85), inset 0 1px 1px rgba(255, 255, 255, .55), inset 0 -3px 6px rgba(60, 30, 10, .35) !important; }
 .feat-grid .card:nth-child(4n) .ic { background: radial-gradient(circle at 35% 30%, #e08aa0, #9b3a5a 60%, #5e1f36) !important; box-shadow: 0 12px 22px -10px rgba(155, 58, 90, .85), inset 0 1px 1px rgba(255, 255, 255, .55), inset 0 -3px 6px rgba(50, 10, 25, .35) !important; }
 .tile .ti { background: var(--pill-red) !important; color: #fff8ee !important; box-shadow: 0 8px 16px -8px rgba(216, 48, 63, .85), inset 0 1px 1px rgba(255, 255, 255, .6) !important; }
+/* kroky „Ako to funguje“ – číslo v lesklej 3D guľke a spojnica medzi krokmi */
+.step { position: relative; }
+.step .num {
+  width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; position: relative;
+  font-family: var(--font) !important; font-weight: 800 !important; font-size: 1.6rem !important; letter-spacing: -.03em !important;
+  color: #fff8ee !important; -webkit-text-stroke: 0 !important; text-shadow: 0 1px 2px rgba(80, 10, 18, .45);
+  background: var(--pill-red); box-shadow: 0 14px 24px -10px rgba(216, 48, 63, .85), inset 0 1px 1px rgba(255, 255, 255, .6), inset 0 -4px 8px rgba(80, 10, 18, .35);
+  transition: transform .45s var(--spring2);
+}
+.step .num::after { content: ""; position: absolute; top: 8px; left: 14px; width: 26px; height: 12px; border-radius: 50%; background: linear-gradient(180deg, rgba(255, 255, 255, .55), rgba(255, 255, 255, 0)); }
+.step:nth-child(2) .num { background: radial-gradient(circle at 35% 30%, #ffd98f, #e2a33a 60%, #a8701d); box-shadow: 0 14px 24px -10px rgba(226, 163, 58, .85), inset 0 1px 1px rgba(255, 255, 255, .6), inset 0 -4px 8px rgba(90, 55, 10, .35); }
+.step:nth-child(3) .num { background: radial-gradient(circle at 35% 30%, #8fe0a0, #3f9e57 60%, #2a7440); box-shadow: 0 14px 24px -10px rgba(63, 158, 87, .85), inset 0 1px 1px rgba(255, 255, 255, .6), inset 0 -4px 8px rgba(15, 60, 25, .35); }
+@media (hover: hover) { .step:hover .num { transform: scale(1.08) rotate(-6deg); } }
